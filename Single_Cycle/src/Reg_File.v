@@ -1,4 +1,3 @@
-/* Status unit*/
 module Reg_File (
         clk,
         rst,
@@ -14,7 +13,7 @@ module Reg_File (
     );
 
     input wire clk;                 // clock signal
-    input wire rst;                 //reset signal
+    input wire rst;                 // reset signal
     input wire [4 : 0]  Reg_S;      // Reg_S
     input wire [4 : 0]  Reg_T;      // Reg_T
     input wire [4 : 0]  Reg_D;      // Reg_D
@@ -26,7 +25,7 @@ module Reg_File (
     output wire [31 : 0] RD2;
     output [31 : 0] Reg_Data;
 
-    reg [31 : 0] Reg_File[31 : 0];      // 32 registers
+    reg [31 : 0] Reg_File[31 : 0];  // 32 registers
 
     integer idx;
 
@@ -57,8 +56,6 @@ module Reg_File (
             end
         end
     end
-
-    
 
     assign Reg_Data = (Reg_Sel != 0) ? Reg_File[Reg_Sel] : 0;
 

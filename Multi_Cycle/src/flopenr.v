@@ -7,28 +7,32 @@
 module flopenr #(parameter WIDTH = 8) (
         clk,
         rst,
-        en,
+        enable,
         d,
         q
     );
 
-    input              clk;
-    input              rst;
-    input              en;
+    input                  clk;
+    input                  rst;
+    input                  enable;
     input  [WIDTH - 1 : 0] d;
 
-    output reg [WIDTH - 1 : 0] q;
+    output [WIDTH - 1 : 0] q;
+
+    reg    [WIDTH - 1 : 0] q_r;
 
     always @(posedge clk, posedge rst)
     begin
         if (rst)
         begin
-            q <= 0;
+            q_r <= 0;
         end
-        else if (en)
+        else if (enable)
         begin
-            q <= d;
+            q_r <= d;
         end
     end
+
+    assign q = q_r;
 
 endmodule

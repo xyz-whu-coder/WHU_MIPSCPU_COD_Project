@@ -21,12 +21,12 @@ module mux4 #(parameter WIDTH = 8) (
         y
     );
 
-    input  [WIDTH - 1 : 0]  d0, d1, d2, d3;
-    input  [1 : 0]          s;
+    input  [WIDTH - 1 : 0] d0, d1, d2, d3;
+    input  [1 : 0]         s;
 
-    output [WIDTH - 1 : 0]  y;
+    output [WIDTH - 1 : 0] y;
 
-    reg [WIDTH - 1 : 0] y_r;
+    reg    [WIDTH - 1 : 0] y_r;
 
     always @( * )
     begin
@@ -62,7 +62,7 @@ module mux8 #(parameter WIDTH = 8) (
 
     output [WIDTH - 1 : 0] y;
 
-    reg [WIDTH - 1 : 0] y_r;
+    reg    [WIDTH - 1 : 0] y_r;
 
     always @( * )
     begin
@@ -110,7 +110,7 @@ module mux16 #(parameter WIDTH = 8) (
 
     output [WIDTH - 1 : 0] y;
 
-    reg [WIDTH - 1 : 0] y_r;
+    reg    [WIDTH - 1 : 0] y_r;
 
     always @( * )
     begin

@@ -1,32 +1,39 @@
-module RF(
+module Reg_File(
         clk,
         rst,
-        RFWr,
-        A1, A2, A3,
-        WD,
-        RD1, RD2,
-        reg_sel,
-        reg_data
+        Reg_File_Write,
+        Reg_S,
+        Reg_T,
+        Reg_Addr_Write,
+        Reg_Data_Write,
+        Reg_Sel,
+        Reg_Data_S,
+        Reg_Data_T,
+        Reg_Data
     );
 
-    input         clk;
-    input         rst;
-    input         RFWr;
-    input  [4 : 0]  A1, A2, A3;
-    input  [31 : 0] WD;
-    output [31 : 0] RD1, RD2;
-    input  [4 : 0]  reg_sel;
+    input           clk;
+    input           rst;
+    input           Reg_File_Write;
+    input  [4 : 0]  Reg_S;
+    input  [4 : 0]  Reg_T;
+    input  [4 : 0]  Reg_Addr_Write;
+    input  [31 : 0] Reg_Data_Write;
+    input  [4 : 0]  Reg_Sel;
 
-    output [31 : 0] reg_data;
+    output [31 : 0] Reg_Data_S;
+    output [31 : 0] Reg_Data_T;
+    output [31 : 0] Reg_Data;
 
-    reg [31:0] Reg_File[31:0];
+    reg    [31 : 0] Reg_File[31 : 0];
 
     integer idx;
 
     always @(posedge clk, posedge rst)
     begin
         if (rst)
-        begin    //  reset
+        begin
+            // reset
             for (idx = 0; idx < 32; idx = idx + 1)
             begin
                 Reg_File[idx] <= 0;
@@ -34,24 +41,20 @@ module RF(
         end
         else
         begin
-            if (RFWr)
+            if (Reg_File_Write)
             begin
-                Reg_File[A3] <= WD;
+                Reg_File[Reg_Addr_Write] <= Reg_Data_Write;
+                $display("r[%02d] = 0x%8X,", Reg_Addr_Write, Reg_Data_Write);
                 for(idx = 0; idx < 32; idx = idx + 1)
                 begin
                     $display("\t\t\t\t\t\tr[%02d] ($%02d) = 0x%8X", idx, idx, Reg_File[idx]);
                 end
-                // $display("r[00-07]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", 0, Reg_File[1], Reg_File[2], Reg_File[3], Reg_File[4], Reg_File[5], Reg_File[6], Reg_File[7]);
-                // $display("r[08-15]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", Reg_File[8], Reg_File[9], Reg_File[10], Reg_File[11], Reg_File[12], Reg_File[13], Reg_File[14], Reg_File[15]);
-                // $display("r[16-23]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", Reg_File[16], Reg_File[17], Reg_File[18], Reg_File[19], Reg_File[20], Reg_File[21], Reg_File[22], Reg_File[23]);
-                // $display("r[24-31]=0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X, 0x%8X", Reg_File[24], Reg_File[25], Reg_File[26], Reg_File[27], Reg_File[28], Reg_File[29], Reg_File[30], Reg_File[31]);
-                $display("r[%2d] = 0x%8X,", A3, WD);
             end
         end
     end
 
-    assign RD1 = (A1 == 0) ? 0 : Reg_File[A1];
-    assign RD2 = (A2 == 0) ? 0 : Reg_File[A2];
-    assign reg_data = (reg_sel == 0) ? 0 : Reg_File[reg_sel];
+    assign Reg_Data_S = (Reg_S == 0) ? 0 : Reg_File[Reg_S];
+    assign Reg_Data_T = (Reg_T == 0) ? 0 : Reg_File[Reg_T];
+    assign Reg_Data = (Reg_Sel == 0) ? 0 : Reg_File[Reg_Sel];
 
 endmodule

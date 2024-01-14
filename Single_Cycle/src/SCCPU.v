@@ -54,22 +54,22 @@ module SCCPU(
     wire [25 : 0] Num_b26;
     wire [31 : 0] Reg_Data_1;
 
-    /* Next_PC*/
+    // Next_PC
     wire [31 : 0] Next_PC;   // the final next pc out to sim top
 
-    /* RegFile*/
+    // RegFile
     wire [31 : 0] Write_Data; // data to regfile
     wire [4 : 0]  Reg_Addr;   // write address of reg, also known as A3
     wire [31 : 0] RD1;
     //RD2 :  Data_Write, directly picked from RD2(Reg_T)
 
-    /*ALU*/
+    // ALU
     wire [31 : 0] ALU_In_1;
     wire [31 : 0] ALU_In_2;
     wire Zero;
     // out :  ALU_Out
 
-    /*Extended 16bits*/
+    // Extended 16bits
     wire [31 : 0] EXT_16; // 区分符号和零拓展，使用模块得到其一结果
     wire Extend_Sign;
 
@@ -219,7 +219,5 @@ module SCCPU(
               .In_Sel   (To_Reg),
               .Out      (Write_Data)
           );
-
-
 
 endmodule

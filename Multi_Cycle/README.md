@@ -15,3 +15,4 @@
 - 验收要求&实验报告（占30%，以下二选一）
   - 在ModelSim仿真中CPU加载studentnosorting_cut.asm对应代码运行正确 （up to 18%）
   - 在Nexys 4 DDR2 开发板上正确实现学号排序，对学号排序前和排序后的结果拍照并放入实验报告(up to 30%) 。
+

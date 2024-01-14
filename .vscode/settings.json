@@ -1,0 +1,12 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.preferredDarkColorTheme": "One Dark Pro Mix",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.statusBar.visible": true,
+    "workbench.tips.enabled": true,
+    "workbench.panel.defaultLocation": "left",
+    "latex-workshop.mathpreviewpanel.cursor.enabled": true,
+    "verilog.formatting.iStyleVerilogFormatter.style": "Indent only",
+    "files.autoGuessEncoding": true,
+    "C_Cpp.errorSquiggles": "disabled"
+}

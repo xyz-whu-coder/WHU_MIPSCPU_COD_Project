@@ -1,4 +1,3 @@
-// 从读取的数据中，根据lh, lw, lbu来确定mem的结果
 module Load_Data (
         Memory_Byte,
         address,
@@ -20,6 +19,7 @@ module Load_Data (
     begin
         if (sign == 1'b1)
         begin
+            // 符号扩展
             case (Memory_Byte)
                 2'b10:
                 begin
@@ -64,6 +64,7 @@ module Load_Data (
         end
         else
         begin
+            // 0扩展
             case (Memory_Byte)
                 2'b10:
                 begin

@@ -1,28 +1,24 @@
-
 // testbench for simulation
 module mccomp_tb();
 
-    reg  clk, rstn;
-    reg  [4:0] reg_sel;
-    wire [31:0] reg_data;
+    reg  clk;
+    reg  rstn;
+    reg  [4 : 0]  Reg_Sel;
+    wire [31 : 0] Reg_Data;
 
     // instantiation of sccomp
     mccomp U_MCCOMP(
-               .clk(clk), 
-               .rstn(rstn), 
-               .reg_sel(reg_sel), 
-               .reg_data(reg_data)
+               .clk(clk),
+               .rstn(rstn),
+               .Reg_Sel(Reg_Sel),
+               .Reg_Data(Reg_Data)
            );
 
     initial
-    begin
-        // $readmemh( "../../Testing_Code/mipstest_extloop.dat" , U_MCCOMP.U_DM.dmem); // load instructions into instruction memory
-        // $readmemh( "../../Testing_Code/mipstestloop_sim.dat" , U_MCCOMP.U_DM.dmem); // load instructions into instruction memory
-        // $readmemh( "../../Testing_Code/mipstestloopjal_sim.dat" , U_MCCOMP.U_DM.dmem); // load instructions into instruction memory
-        // $readmemh( "../../Testing_Code/extendedtest.dat" , U_MCCOMP.U_DM.dmem); // load instructions into instruction memory
-        $readmemh( "../../Testing_Code/studentnosorting_cut.dat" , U_MCCOMP.U_DM.dmem); // load instructions into instruction memory
-        // $readmemh( "../../Testing_Code/my_studentnosorting_cut.dat" , U_MCCOMP.U_DM.dmem); // load instructions into instruction memory
-        $monitor("\t\t\t\t\t\tPC = 0x%8X,                                 instr = 0x%8X", U_MCCOMP.PC, U_MCCOMP.instr); // used for debug
+    begin 
+        // $readmemh( "../../Testing_Code/studentnosorting_cut.dat" , U_MCCOMP.U_DM.Data_Memory); // load instructions into data memory
+        $readmemh( "../../Testing_Code/my_studentnosorting_cut.dat" , U_MCCOMP.U_DM.Data_Memory); // load instructions into data memory
+        $monitor("\nPC = 0x%8X, instr = 0x%8X\n", U_MCCOMP.PC, U_MCCOMP.instruction); // used for debug
         clk = 1;
         rstn = 1;
         #5 ;
@@ -30,7 +26,7 @@ module mccomp_tb();
         #20 ;
         rstn = 1;
         #1000 ;
-        reg_sel = 7;
+        Reg_Sel = 7;
     end
 
     always
@@ -45,3 +41,4 @@ module mccomp_tb();
     end
 
 endmodule
+

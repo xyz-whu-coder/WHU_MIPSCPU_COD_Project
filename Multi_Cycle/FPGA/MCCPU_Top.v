@@ -37,7 +37,7 @@ module MCCPUSOC_Top(
             );
 
     // instantiation of single-cycle cpu
-    mccpu U_MCCPU(
+    MCCPU U_MCCPU(
               .clk(Clk_CPU),
               .rst(rst),
               .instr(instr),

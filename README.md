@@ -10,7 +10,7 @@
 ```
 .
 ├── Multi_Cycle
-│   ├── FPGA
+│   ├── FPGA/
 │   ├── README.md
 │   ├── Simulate
 │   │   ├── create_wave.sh
@@ -26,7 +26,7 @@
 ├── Nexys4DDR_CPU.xdc
 ├── README.md
 ├── Single_Cycle
-│   ├── FPGA
+│   ├── FPGA/
 │   ├── README.md
 │   ├── Simulate
 │   │   ├── Data_Memory.v

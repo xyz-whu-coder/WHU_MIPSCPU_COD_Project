@@ -11,13 +11,13 @@ module flopr #(parameter WIDTH = 8) (
         d,
         q
     );
-    input                   clk;
-    input                   rst;
-    input  [WIDTH - 1 : 0]  d;
+    input                  clk;
+    input                  rst;
+    input  [WIDTH - 1 : 0] d;
 
-    output [WIDTH - 1 : 0]  q;
+    output [WIDTH - 1 : 0] q;
 
-    reg [WIDTH - 1 : 0] q_r;
+    reg    [WIDTH - 1 : 0] q_r;
 
     always @(posedge clk or posedge rst)
     begin
@@ -31,7 +31,7 @@ module flopr #(parameter WIDTH = 8) (
             // otherwise in positive edge of clk, output d
             q_r <= d;
         end
-    end // end always
+    end
 
     assign q = q_r;
 
